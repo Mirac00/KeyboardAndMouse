@@ -1,0 +1,52 @@
+﻿@model KeyboardAndMouse.Models.Set
+
+@{
+ViewData["Title"] = "Create";
+}
+
+<h1>Create a new Set</h1>
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="KeyboardId" class="control-label"></label>
+    <select asp-for="KeyboardId" class="form-control" asp-items="@(new SelectList(ViewBag.Keyboards, "Id", "Name"))"></select>
+    <span asp-validation-for="KeyboardId" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="MouseId" class="control-label"></label>
+    <select asp-for="MouseId" class="form-control" asp-items="@(new SelectList(ViewBag.Mice, "Id", "Name"))"></select>
+    <span asp-validation-for="MouseId" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="CategoryId" class="control-label"></label>
+    <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))"></select>
+    <span asp-validation-for="CategoryId" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Description" class="control-label"></label>
+    <textarea asp-for="Description" class="form-control"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Rating" class="control-label"></label>
+    <input asp-for="Rating" class="form-control" />
+    <span asp-validation-for="Rating" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <input type="submit" value="Create" class="btn btn-primary" />
+</div>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
